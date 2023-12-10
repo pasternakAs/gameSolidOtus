@@ -2,7 +2,7 @@
 
 namespace gameSolidOtus
 {
-    public class GameClass : IGame, INumberAttempts, INumberRange
+    public class GameClass : IGameGuess, INumberAttempts, INumberRange
     {
         private int _numberAttempts;
         private int _minRange;
@@ -98,7 +98,7 @@ namespace gameSolidOtus
         /// <summary>
         /// Генератор числа
         /// </summary>
-        private void GenerateNumber()
+        public void GenerateNumber()
         {
             var rnd = new Random();
             _generateNumber = rnd.Next(_minRange, _maxRange);
@@ -108,7 +108,7 @@ namespace gameSolidOtus
         /// проверка угадал или нет
         /// </summary>
         /// <param name="text"></param>
-        private void NumberCheck(string text)
+        public void NumberCheck(string text)
         {
             var number = Convert.ToInt32(text);
 
@@ -132,7 +132,7 @@ namespace gameSolidOtus
         /// <summary>
         /// Запуск игры
         /// </summary>
-        private void StartedGuessing()
+        public void StartedGuessing()
         {
             for (int i = 0; i < _numberAttempts; i++)
             {
