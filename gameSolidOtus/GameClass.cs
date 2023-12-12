@@ -134,9 +134,11 @@ namespace gameSolidOtus
         /// </summary>
         public void StartedGuessing()
         {
+            var countAttempts = _numberAttempts;
+
             for (int i = 0; i < _numberAttempts; i++)
             {
-                --_numberAttempts;
+                --countAttempts;
                 var text = Console.ReadLine() ?? "";
 
                 while (!_validNumber.IsNumber(text))
@@ -149,13 +151,13 @@ namespace gameSolidOtus
 
                 if (_isGuessed) return;
 
-                if (_numberAttempts == 0) 
+                if (countAttempts == 0) 
                 {
                     _messageWriter.Write("Вы не угадали! Конец игры.");
                     return;
                 }
 
-                _messageWriter.Write($@"Осталось {_numberAttempts} попыток!");
+                _messageWriter.Write($@"Осталось {countAttempts} попыток!");
                 _messageWriter.Write("Введите число:");
             }
         }
